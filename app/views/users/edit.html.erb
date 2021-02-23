@@ -1,0 +1,24 @@
+<div class="container px-5 px-sm-0">
+  <% if @user.errors %>
+  <ul>
+    <% @user.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+  <% end %>
+
+  <div class="row">
+    <div class="col-md-3">
+    <h2>User info</h2>
+    <%= form_for(@user, url: user_path(current_user.id)) do |f| %>
+    <label for="inputName">Name</label>
+    <%= f.text_field :name, autofocus: true %>
+    <label for="inputImage">ProImage</label>
+    <%= f.attachment_field :profile_image %>
+    <label for="inputintroduction">Introduction</label>
+    <%= f.text_area :introduction, autofocus: true %>
+    <%= f.submit "Update User" %>
+    <% end %>
+    </div>
+  </div>
+</div>
